@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0');  */
+/* @import url('"https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&family=Material+Symbols+Rounded:wght@400&family=Material+Symbols+Sharp:wght@400&display=swap'); */
 
 @tailwind base;
 @tailwind components;
@@ -70,5 +73,14 @@
 body {
   font-family: "Onest", serif;
   font-optical-sizing: auto;
+}
+
+.material-symbols {
+  font-family: 'Material Symbols Outlined';
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'ospz' 48;
+}
+
+.material-symbols-filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'ospz' 48;
 }
 

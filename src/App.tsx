@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
 import Login from './pages/login/index';
 import Dashboard from './pages/dashboard/index';
+import CreateRecipe from './pages/create-recipe';
+import Recipes from './pages/recipe/recipes';
 
 function App() {
   return (
@@ -10,6 +12,8 @@ function App() {
       <Routes>
         <Route path="login" element={<Login/>}/>
         <Route path='dashboard' element={<Dashboard/>}/>
+        <Route path="create-recipe" element={<CreateRecipe/>}/>
+        <Route path='recipes' element={<Recipes/>}/>
       </Routes>
     </div>
     </BrowserRouter>
