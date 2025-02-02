@@ -5,6 +5,7 @@ import Dashboard from './pages/dashboard/index';
 import CreateRecipe from './pages/create-recipe';
 import Recipes from './pages/recipe/recipes';
 import BaseLayout from './layout/BaseLayout';
+import RecipeDetails from './pages/recipe/recipeDetails';
 
 function App() {
   return (

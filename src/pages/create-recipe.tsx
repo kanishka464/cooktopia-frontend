@@ -123,6 +123,7 @@ import axios from "axios";
 
 const CreateRecipe = () => {
   const [steps, setSteps] = useState([{ id: 1, value: "" }]);
+  const API_URL = import.meta.env.VITE_API_URL;
   const [ recipeForm, setRecipeForm] = useState<{
     recipeName: string;
     cookingTime: string;
@@ -165,7 +166,7 @@ const CreateRecipe = () => {
     console.log(recipeForm);
 
     try {
-        const response = await axios.post('http://localhost:4000/api/recipe/insertRecipe', recipeForm);
+        const response = await axios.post(`${API_URL}/recipe/insertRecipe`, recipeForm);
         console.log(response);
     } catch (error) {
       console.log(error);

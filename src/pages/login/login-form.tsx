@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const [form, setForm] = useState({email:'', password:''});
-
     const navigate = useNavigate();
 
     const handleForm = (e:any) => {
@@ -20,7 +19,7 @@ const LoginForm = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post('http://localhost:4000/api/auth/login', form);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/login`, form);
             console.log(response);
             if(response.data.success) {
                 localStorage.setItem('token', response?.data?.data?.token);

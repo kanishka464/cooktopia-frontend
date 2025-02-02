@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Favorite, FavoriteBorder, Star } from "@mui/icons-material";
 import { toast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 interface RecipeSchema {
     _id: string;
@@ -21,7 +22,7 @@ const Recipes = () => {
 
     const getRecipes = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/recipe/getAllRecipe');
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/recipe/getAllRecipe`);
             setRecipes(response?.data?.data);
         } catch (error) {
             console.log(error);
@@ -30,7 +31,7 @@ const Recipes = () => {
 
     const handleLike = async (recipe:RecipeSchema) => {
         try {
-            const response = await axios.post('http://localhost:4000/api/recipe/like-recipe', {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/recipe/like-recipe`, {
                 user_id: localStorage.getItem('user_id'),
                 recipe_id: recipe?._id
             });
