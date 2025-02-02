@@ -3,7 +3,6 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const RegisterForm = (props:any) => {
     const { setSelectedMethod } = props;
@@ -12,8 +11,6 @@ const RegisterForm = (props:any) => {
 
     const [form, setForm] = useState({username:'', email:'', password:'', confirmPassword:''});
     const [error, setError] = useState({username:false, email:false, password:false});
-
-    const navigate = useNavigate();
 
     const handleForm = (e:any) => {
         setForm({
@@ -51,7 +48,7 @@ const RegisterForm = (props:any) => {
                 email:form.email,
                 password: form.password
             }
-            const response = await axios.post('http://localhost:4000/api/users/add', payload);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/users/add`, payload);
             if(response?.data?.success) {
                 toast({
                     title:'User Registered successfully',

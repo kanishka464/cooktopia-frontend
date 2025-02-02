@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Favorite, FavoriteBorder, Star } from "@mui/icons-material";
 import { toast } from "@/hooks/use-toast";
+import { Link } from "react-router-dom";
 
 interface RecipeSchema {
     _id: string;
@@ -21,7 +22,7 @@ const Recipes = () => {
 
     const getRecipes = async () => {
         try {
-            const response = await axios.get('http://localhost:4000/api/recipe/getAllRecipe');
+            const response = await axios.get(`${import.meta.env.VITE_API_URL}/recipe/getAllRecipe`);
             setRecipes(response?.data?.data);
         } catch (error) {
             console.log(error);
@@ -30,7 +31,7 @@ const Recipes = () => {
 
     const handleLike = async (recipe:RecipeSchema) => {
         try {
-            const response = await axios.post('http://localhost:4000/api/recipe/like-recipe', {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/recipe/like-recipe`, {
                 user_id: localStorage.getItem('user_id'),
                 recipe_id: recipe?._id
             });
@@ -78,7 +79,7 @@ const Recipes = () => {
         <div className="grid grid-cols-4 gap-5 w-11/12 mx-auto">
             {
                 recipes?.map((recipe) => (
-                    <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white">
+                    <Link to={recipe?._id} key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white">
                         {/* Recipe Image */}
                         <div className="w-full bg-[#a1a0a052] h-48 rounded-xl">
 
@@ -143,7 +144,7 @@ const Recipes = () => {
                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 ))
             }
         </div>

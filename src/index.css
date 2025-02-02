@@ -84,3 +84,14 @@ body {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'ospz' 48;
 }
 
+.tag {
+  @apply inline-block px-3 py-1 text-sm font-medium rounded-full bg-[#e79d26] text-white;
+}
+
+.veg {
+  background: rgb(23, 228, 23) !important;
+}
+
+.non-veg {
+  background: rgb(228, 23, 23) !important;
+}
