@@ -4,7 +4,7 @@ import { Favorite, FavoriteBorder, Star } from "@mui/icons-material";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
 
-interface RecipeSchema {
+export interface RecipeSchema {
     _id: string;
     recipeName: string;
     ratingAverage: string;
@@ -79,18 +79,18 @@ const Recipes = () => {
         <div className="grid grid-cols-4 gap-5 w-11/12 mx-auto">
             {
                 recipes?.map((recipe) => (
-                    <Link to={recipe?._id} key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white">
+                    <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white">
                         {/* Recipe Image */}
-                        <div className="w-full bg-[#a1a0a052] h-48 rounded-xl">
+                        <Link to={recipe?._id} className="w-full bg-[#a1a0a052] h-48 rounded-xl">
 
-                        </div>
+                        </Link>
 
                         {/* Recipe Detail */}
                         <div className="flex flex-col gap-3 p-5">
                             <div className="flex justify-between items-center">
-                               <div className="font-semibold text-xl">
+                               <Link to={recipe?._id} className="font-semibold text-xl">
                                     {recipe?.recipeName}
-                                </div>
+                                </Link>
                                {/* Recipe Like Button */}
                                <div onClick={() => handleLike(recipe)} className="cursor-pointer">
                                 { checkLike(recipe) ? <Favorite style={{color:'red'}}/> : <FavoriteBorder/> }
@@ -144,7 +144,7 @@ const Recipes = () => {
                                </div>
                             </div>
                         </div>
-                    </Link>
+                    </div>
                 ))
             }
         </div>

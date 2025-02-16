@@ -10,7 +10,13 @@ export interface Recipe {
     recipeName: string;
     cuisines: string;
     category: string;
-    cookingTime: number;
+    cookingTime: string;
     serves: number;
     comments: Comment[];
+    mealType: string;
+    ratingAverage: string;
+    calories: string;
+    steps: string[];
+    created_by: string;
+    similarRecipes?: Recipe[];
 }

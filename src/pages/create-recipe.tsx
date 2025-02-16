@@ -120,22 +120,12 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import axios from "axios";
+import { Recipe } from "@/utils/interface";
 
 const CreateRecipe = () => {
   const [steps, setSteps] = useState([{ id: 1, value: "" }]);
   const API_URL = import.meta.env.VITE_API_URL;
-  const [ recipeForm, setRecipeForm] = useState<{
-    recipeName: string;
-    cookingTime: string;
-    category: string;
-    mealType: string;
-    cuisines: string;
-    ratingAverage: string;
-    serves: number;
-    calories: string;
-    steps: string[];
-    created_by: string;
-  }>({
+  const [ recipeForm, setRecipeForm] = useState<Recipe>({
     recipeName:'',
     cookingTime: '',
     category: '',
@@ -146,6 +136,7 @@ const CreateRecipe = () => {
     calories: '',
     steps: [],
     created_by:'',
+    comments: [],
   });
 
   const handleRecipeForm = (key:string, value:string | number) => {
