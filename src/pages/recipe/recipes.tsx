@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 export interface RecipeSchema {
     _id: string;
     recipeName: string;
+    recipeImage: string;
     ratingAverage: string;
     cookingTime: number;
     category: string;
@@ -70,7 +71,7 @@ const Recipes = () => {
         }
     }
   return (
-    <div className="flex flex-col gap-8 py-5 h-[100vh]">
+    <div className="flex flex-col gap-8 py-5 h-fit">
         <div className="w-11/12 mx-auto p-10 rounded-xl bg-white">
 
         </div>
@@ -82,8 +83,8 @@ const Recipes = () => {
                     <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white hover:shadow-[rgba(245,_208,_254)_0px_3px_8px] transition-all duration-200 ease-in-out hover:scale-105">
 
                         {/* Recipe Image */}
-                        <Link to={recipe?._id} className="w-full bg-[#a1a0a052] h-48 rounded-xl">
-
+                        <Link to={recipe?._id} className="w-full h-48 rounded-xl">
+                            <img src={recipe?.recipeImage} className="h-52 max-h-52 w-full object-cover rounded-xl"/>
                         </Link>
 
                         {/* Recipe Detail */}

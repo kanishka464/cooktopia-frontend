@@ -1,8 +1,7 @@
-import { AccessTime, FavoriteBorder, Group, Groups, Share, Star } from "@mui/icons-material";
+import { AccessTime, FavoriteBorder, Group, Groups, Share } from "@mui/icons-material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import RecipeImage from "@/assets/recipes/pasta.jpg"
 import { calculateDifference } from "@/utils/helper";
 import { Recipe } from "@/utils/interface";
 
@@ -48,8 +47,8 @@ const RecipeDetails = () => {
             <div className="w-full bg-[#202124] h-[500px] flex items-center gap-8 py-8">
                 <div className="w-9/12 mx-auto flex items-center gap-10">
                     {/* RECIPE IMAGE */}
-                    <div className="w-1/2 rounded-xl h-[300px]">
-                        <img src={RecipeImage} className="w-full object-cover rounded-xl"/>
+                    <div className="w-1/2 rounded-xl h-[300px] max-h-[300px]">
+                        <img src={recipeDetails?.recipeImage} className="w-full object-cover rounded-xl max-h-[300px]"/>
                     </div>
 
                     <div className="w-1/2 flex flex-start flex-col gap-5">

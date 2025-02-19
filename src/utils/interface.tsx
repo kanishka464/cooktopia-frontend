@@ -8,6 +8,7 @@ export interface Comment {
 
 export interface Recipe {
     recipeName: string;
+    recipeImage?: string;
     cuisines: string;
     category: string;
     cookingTime: string;
