@@ -95,7 +95,7 @@ const Dashboard = () => {
         {profileAnalytics?.map((analytic) => (
           <div
             key={analytic.id}
-            className="flex gap-3 bg-white w-1/4 p-5 rounded-xl"
+            className="flex gap-3 bg-white w-1/4 p-5 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
           >
             <span className="material-symbols-outlined p-3 rounded-md bg-slate-100">
               {analytic.icon}
@@ -115,7 +115,7 @@ const Dashboard = () => {
       {/* Recent Activity */}
       <div className="flex justify-between gap-8 w-11/12 mx-auto">
         {/* Activities */}
-        <div className="w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5">
+        <div className="w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
           <div className="text-xl font-bold">Recent Activities</div>
 
           <div className="flex flex-col gap-5">
@@ -139,7 +139,7 @@ const Dashboard = () => {
         </div>
         
         {/* Trending Recipes */}
-        <div className="w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5">
+        <div className="w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
             <div className="text-xl font-bold">Trending Recipes</div>
 
             <div className="flex flex-col gap-5">

@@ -75,10 +75,10 @@ const Recipes = () => {
         </div>
 
         {/* LIST RECIPES */}
-        <div className="grid grid-cols-4 gap-5 w-11/12 mx-auto">
+        <div className="grid grid-cols-3 gap-5 w-11/12 mx-auto">
             {
                 recipes?.map((recipe) => (
-                    <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white">
+                    <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white hover:shadow-[rgba(245,_208,_254)_0px_3px_8px] transition-all duration-200 ease-in-out hover:scale-105">
                         {/* Recipe Image */}
                         <div className="w-full bg-[#a1a0a052] h-48 rounded-xl">
 
