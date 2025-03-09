@@ -177,13 +177,13 @@ const RecipeDetails = () => {
                         You Might Also Like
                     </div>
 
-                    <div className="grid grid-cols-4 gap-5">
+                    <div className="grid grid-cols-3 gap-5">
                         {
                             recipeDetails?.similarRecipes?.map((recipe:any) => (
                                 <div key={recipe?._id} className="flex flex-col w-full rounded-xl">
                                     {/* Recipe Image */}
-                                    <Link to={`${window.location.origin}/recipes/${recipe?._id}`} className="w-full bg-[#a1a0a052] h-48 rounded-t-xl">
-
+                                    <Link to={`${window.location.origin}/recipes/${recipe?._id}`} className="w-full h-48 rounded-t-xl">
+                                        <img src={recipe?.recipeImage} className="h-52 max-h-52 w-full object-cover rounded-xl"/>
                                     </Link>
 
                                     {/* Recipe Detail */}
