@@ -1,4 +1,4 @@
-import { AccessTime, FavoriteBorder, Group, Share } from '@mui/icons-material';
+import { AccessTime, Group, Share } from '@mui/icons-material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
