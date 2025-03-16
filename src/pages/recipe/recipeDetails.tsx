@@ -86,7 +86,7 @@ const RecipeDetails = () => {
                             <div className="flex gap-2 items-center text-[#cccccc]">
                                 <div className="text-xs"><Star size={20} color="yellow" fill={"yellow"}/></div>
                                 <div className="flex gap-1 items-center">
-                                    <div>{recipeDetails?.rating ? getAverageRating(recipeDetails.rating): 'N/A'}</div>
+                                    <div>{recipeDetails?.rating && !isNaN(parseInt(getAverageRating(recipeDetails.rating))) ? getAverageRating(recipeDetails.rating) : 0}</div>
                                     <div>{`( ${recipeDetails?.rating?.length} )`}</div>
                                 </div>
                             </div>

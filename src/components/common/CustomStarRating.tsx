@@ -24,10 +24,12 @@ export const CustomStarRating = (props: any) => {
       );
 
       if (response?.data?.success) {
-        toast({ title: 'Recipe rated successfully'});
+        toast({ title: 'Recipe rated successfully' });
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      window.location.reload();
     }
   };
 
