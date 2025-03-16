@@ -2,12 +2,14 @@ import { AccessTime, Group, Share } from '@mui/icons-material';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { calculateDifference } from '@/utils/helper';
+import { calculateDifference, getAverageRating } from '@/utils/helper';
 import { Recipe } from '@/utils/interface';
 import RecipeListing from '@/components/common/RecipeListing';
-import { Helmet } from 'react-helmet';
+import { Star } from 'lucide-react';
+import { CustomStarRating } from '@/components/common/CustomStarRating';
 import { useToast } from '@/hooks/use-toast';
 import { Heart } from 'lucide-react';
+import { Helmet } from 'react-helmet';
 
 const RecipeDetails = () => {
   const { id } = useParams();
@@ -19,12 +21,12 @@ const RecipeDetails = () => {
   const { toast } = useToast();
 
   const checkLike = () => {
-    if(recipeDetails?.likedByUser?.includes(localStorage.getItem('user_id'))) {
+    if (recipeDetails?.likedByUser?.includes(localStorage.getItem('user_id'))) {
       return true;
     } else {
       return false;
     }
-  }
+  };
 
   const handleLike = async () => {
     try {
@@ -93,6 +95,21 @@ const RecipeDetails = () => {
     }
   };
 
+  const getRatingValue = () => {
+    if (recipeDetails?.rating) {
+      const userRating = recipeDetails?.rating.find(
+        (rating) => rating?.ratedBy?._id === localStorage.getItem('user_id')
+      );
+      if (userRating) {
+        return userRating.rating;
+      } else {
+        return 0;
+      }
+    } else {
+      return 0;
+    }
+  };
+
   useEffect(() => {
     id && getRecipeDetails();
   }, [id]);
@@ -143,7 +160,21 @@ const RecipeDetails = () => {
             </div>
 
             {/* RECIPE OVERVIEW */}
-            <div className='flex gap-5'>
+            <div className='flex gap-5 items-center'>
+              <div className='flex gap-2 items-center text-[#cccccc]'>
+                <div className='text-xs'>
+                  <Star size={20} color='yellow' fill={'yellow'} />
+                </div>
+                <div className='flex gap-1 items-center'>
+                  <div>
+                    {recipeDetails?.rating &&
+                    !isNaN(parseInt(getAverageRating(recipeDetails.rating)))
+                      ? getAverageRating(recipeDetails.rating)
+                      : 0}
+                  </div>
+                  <div>{`( ${recipeDetails?.rating?.length} )`}</div>
+                </div>
+              </div>
               <div className='flex gap-1 items-center text-[#cccccc]'>
                 <div className='text-xs'>
                   <AccessTime />
@@ -200,6 +231,17 @@ const RecipeDetails = () => {
                 <div className='text-lg'>{step}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Rate Recipe */}
+      <div className='w-full py-5'>
+        <div className='w-11/12 mx-auto'>
+          <div className='flex flex-col w-1/2 gap-3 bg-white p-5 rounded-xl shadow-lg'>
+            <div className='font-semibold'>Rate This Recipe</div>
+
+            <CustomStarRating value={getRatingValue()} />
           </div>
         </div>
       </div>

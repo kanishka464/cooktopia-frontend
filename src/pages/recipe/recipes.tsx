@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Favorite, FavoriteBorder, Star } from "@mui/icons-material";
 import { toast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
+import { getAverageRating } from "@/utils/helper";
 
 export interface RecipeSchema {
     _id: string;
@@ -79,7 +80,7 @@ const Recipes = () => {
         {/* LIST RECIPES */}
         <div className="grid grid-cols-3 gap-5 w-11/12 mx-auto">
             {
-                recipes?.map((recipe) => (
+                recipes?.map((recipe: any) => (
                     <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white hover:shadow-[rgba(245,_208,_254)_0px_3px_8px] transition-all duration-200 ease-in-out hover:scale-105">
 
                         {/* Recipe Image */}
@@ -107,11 +108,11 @@ const Recipes = () => {
                                     </span> */}
                                     <Star style={{fontSize:'12px', color:'yellow'}}/>
                                     <div>
-                                        {'4.3'}
+                                        {!isNaN(parseInt(getAverageRating(recipe?.rating))) ? getAverageRating(recipe?.rating) : 0}
                                     </div>
 
                                     <div>
-                                        {`(234)`}
+                                        {`( ${recipe?.rating?.length} )`}
                                     </div>
                                 </div>
 
