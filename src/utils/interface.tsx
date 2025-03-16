@@ -20,4 +20,5 @@ export interface Recipe {
     steps: string[];
     created_by: string;
     similarRecipes?: Recipe[];
+    likedByUser: any;
 }
