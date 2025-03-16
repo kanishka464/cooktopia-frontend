@@ -6,6 +6,7 @@ import CreateRecipe from './pages/create-recipe';
 import Recipes from './pages/recipe/recipes';
 import BaseLayout from './layout/BaseLayout';
 import RecipeDetails from './pages/recipe/recipeDetails';
+import UserProfile from './pages/user-profile';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="create-recipe" element={<CreateRecipe/>}/>
           <Route path='recipes' element={<Recipes/>}/>
           <Route path='recipes/:id' element={<RecipeDetails/>}/>
+          <Route path='profile/:id' element={<UserProfile/>}/>
         </Route>
       </Routes>
     </div>

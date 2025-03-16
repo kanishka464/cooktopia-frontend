@@ -30,6 +30,7 @@ const data = {
     avatar: `https://api.dicebear.com/9.x/avataaars/svg?seed=${localStorage.getItem(
       "userImage"
     )}&radius=50&backgroundColor=65c9ff,b6e3f4,ffdfbf,ffd5dc,d1d4f9,c0aede&backgroundType=gradientLinear,solid`,
+    user_id: localStorage.getItem("user_id") || "",
   },
   navMain: [
     {
