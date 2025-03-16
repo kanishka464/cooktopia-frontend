@@ -13,6 +13,7 @@ export interface Recipe {
     category: string;
     cookingTime: string;
     serves: number;
+    rating: [{rating: number, ratedBy: { _id: string }}];
     comments: Comment[];
     mealType: string;
     ratingAverage: string;
