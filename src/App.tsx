@@ -13,6 +13,7 @@ import Recipes from './pages/recipe/recipes';
 import BaseLayout from './layout/BaseLayout';
 import RecipeDetails from './pages/recipe/recipeDetails';
 import UserProfile from './pages/user-profile';
+import Community from './pages/community';
 
 const isAuthenticated = () => {
     return localStorage.getItem('token');
@@ -44,6 +45,7 @@ function App() {
                                 element={<CreateRecipe />}
                             />
                             <Route path='recipes' element={<Recipes />} />
+                            <Route path='community' element={<Community/>}/>
                             <Route
                                 path='recipes/:id'
                                 element={<RecipeDetails />}

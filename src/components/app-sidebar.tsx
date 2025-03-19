@@ -47,7 +47,7 @@ const data = {
     },
     {
       title: "Community",
-      url: "#",
+      url: "community",
       icon: PersonStanding,
     },
     {
