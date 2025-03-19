@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const RecipeListing = ({ recipes }: { recipes: any }) => {
   return (
-    <div className="w-[97%] mx-auto grid grid-cols-3 gap-5">
+    <div className="w-[97%] mx-auto grid grid-cols-4 gap-3">
       {recipes?.map((recipe: any) => (
         <div key={recipe?._id} className="flex flex-col w-full rounded-xl">
           {/* Recipe Image */}

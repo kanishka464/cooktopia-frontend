@@ -1,14 +1,11 @@
 import * as React from "react";
 import {
-  AudioWaveform,
   PersonStanding,
   CookingPot,
-  Command,
   Frame,
-  GalleryVerticalEnd,
   Map,
   PieChart,
-  Settings2,
+  UserRound,
   LayoutDashboard,
 } from "lucide-react";
 
@@ -51,9 +48,9 @@ const data = {
       icon: PersonStanding,
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
+      title: "Profile",
+      url: `profile/${localStorage.getItem('user_id')}`,
+      icon: UserRound,
     },
   ],
   projects: [
