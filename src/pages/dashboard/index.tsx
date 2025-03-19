@@ -1,8 +1,34 @@
+import { calculateDifference } from '@/utils/helper';
 import axios from 'axios';
+import { Heart, MessageSquareText, Star } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   const [profileDetails, setProfileDetails] = useState<any>();
+  const [trendingRecipe, setTrendingRecipes] = useState<any>();
+  const [recentActivity, setRecentActivity] = useState<any>();
+
+  const navigate = useNavigate();
+
+  const getRecentActivity = async () => {
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}/users/recent-activity`, { params: { userId: localStorage.getItem('user_id')}});
+      setRecentActivity(response?.data?.data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const getTrendingRecipes = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}/recipe/trending-recipes`,
+        { params: { userId: localStorage.getItem('user_id') } }
+      );
+      setTrendingRecipes(response?.data?.data);
+    } catch (error) {}
+  };
 
   const getUserDetails = async () => {
     try {
@@ -23,6 +49,8 @@ const Dashboard = () => {
 
   useEffect(() => {
     getUserDetails();
+    getTrendingRecipes();
+    getRecentActivity();
   }, []);
 
   const getLikeOnUserRecipes = (recipes: any) => {
@@ -43,7 +71,7 @@ const Dashboard = () => {
     });
 
     return count;
-  }
+  };
 
   const profileAnalytics = [
     {
@@ -72,48 +100,6 @@ const Dashboard = () => {
       title: 'Comments',
       count: getCommentOnUserRecipes(profileDetails?.createdRecipes),
       icon: 'chat_bubble',
-    },
-  ];
-
-  const recentActivity = [
-    {
-      id: 1,
-      title: 'Sarah liked your Pasta recipe',
-      time: '2',
-      user: 'Aidan',
-    },
-    {
-      id: 2,
-      title: 'Mike commented on your Chocolate Cake recipe',
-      time: '5',
-      user: 'Maria',
-    },
-    {
-      id: 3,
-      title: 'Emma Started following you',
-      time: '7',
-      user: 'Jameson',
-    },
-  ];
-
-  const trendingRecipe = [
-    {
-      id: 1,
-      recipeName: 'Homemade Pizza',
-      rating: '4.2',
-      reviews: '2.1k',
-    },
-    {
-      id: 2,
-      recipeName: 'Chicken Tikka Masala',
-      rating: '4.8',
-      reviews: '1.1k',
-    },
-    {
-      id: 3,
-      recipeName: 'Vegan Buddha Bowl',
-      rating: '3.9',
-      reviews: '2.5k',
     },
   ];
 
@@ -166,7 +152,7 @@ const Dashboard = () => {
           <div className='text-xl font-bold'>Recent Activities</div>
 
           <div className='flex flex-col gap-5'>
-            {recentActivity.map((activity) => (
+            {recentActivity?.map((activity:any) => (
               <div className='flex gap-3'>
                 <img
                   className='w-10 h-10'
@@ -174,10 +160,10 @@ const Dashboard = () => {
                 />
 
                 <div className='flex flex-col'>
-                  <div className='text-lg'>{activity.title}</div>
+                  <div className='text-lg'>{activity?.message}</div>
 
                   <div className='text-sm text-[#858585]'>
-                    {activity.time} hours ago
+                    {calculateDifference(activity?.date)}
                   </div>
                 </div>
               </div>
@@ -189,22 +175,43 @@ const Dashboard = () => {
         <div className='w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]'>
           <div className='text-xl font-bold'>Trending Recipes</div>
 
-          <div className='flex flex-col gap-5'>
-            {trendingRecipe?.map((recipe) => (
-              <div className='flex items-center gap-5'>
-                <div className='flex justify-center items-center bg-slate-100 w-16 h-16 rounded-lg text-[#666666] text-2xl '>
-                  {recipe.id}
+          <div className='flex flex-col'>
+            {trendingRecipe?.map((recipe: any) => (
+              <div className='flex items-center gap-5 hover:bg-fuchsia-100 px-5 py-3 rounded-lg cursor-pointer' onClick={() => navigate(`/recipes/${recipe?._id}`)}>
+                <div className='flex justify-center items-center bg-slate-100 rounded-lg text-[#666666] text-2xl '>
+                  <img
+                    src={recipe?.recipeImage}
+                    className='rounded-lg object-cover w-16 h-16'
+                  />
                 </div>
 
                 <div className='flex flex-col'>
                   <div className='font-semibold'>{recipe.recipeName}</div>
 
-                  <div className='flex gap-1 items-center text-sm text-[#858585]'>
-                    <span className='material-symbols-outlined'>star</span>
+                  <div className='flex gap-5 w-full items-center'>
+                    <div className='flex gap-1 items-center text-sm text-[#858585]'>
+                      <Star color='yellow' fill='yellow' />
 
-                    <div>{recipe.rating}</div>
+                      <div>{recipe.averageRating}</div>
 
-                    <div>{`(${recipe.reviews} reviews)`}</div>
+                      <div>{`( ${recipe.rating?.length} reviews )`}</div>
+                    </div>
+
+                    <div className='w-1 h-1 rounded-full bg-fuchsia-400'></div>
+
+                    <div className='flex gap-1 items-center text-sm text-[#858585]'>
+                      <Heart color='red' fill='red' />
+
+                      <div>{recipe.likesCount}</div>
+                    </div>
+
+                    <div className='w-1 h-1 rounded-full bg-fuchsia-400'></div>
+
+                    <div className='flex gap-1 items-center text-sm text-[#858585]'>
+                      <MessageSquareText color='#858585' />
+
+                      <div>{recipe?.comments?.length}</div>
+                    </div>
                   </div>
                 </div>
               </div>
