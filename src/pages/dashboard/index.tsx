@@ -116,9 +116,9 @@ const Dashboard = () => {
 
           <img
             className='w-12 h-12'
-            src={`https://api.dicebear.com/9.x/avataaars/svg?seed=${localStorage.getItem(
+            src={`${localStorage.getItem(
               'userImage'
-            )}&radius=50&backgroundColor=65c9ff,b6e3f4,ffdfbf,ffd5dc,d1d4f9,c0aede&backgroundType=gradientLinear,solid`}
+            )}`}
           />
         </div>
       </div>
