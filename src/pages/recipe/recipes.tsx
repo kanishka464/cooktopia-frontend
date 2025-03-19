@@ -189,83 +189,80 @@ const Recipes = () => {
         </div>
       </div>
 
-      {/* LIST RECIPES */}
-      <div className='grid grid-cols-4 gap-5 w-[97%] mx-auto'>
-        {recipes?.length > 0 ? recipes?.map((recipe: any) => (
-          <div
-            key={recipe?._id}
-            className='flex flex-col w-full rounded-xl bg-white hover:shadow-[rgba(245,_208,_254)_0px_3px_8px] transition-all duration-200 ease-in-out hover:scale-105'
-          >
-            {/* Recipe Image */}
-            <Link to={recipe?._id} className='w-full h-48 rounded-xl'>
-              <img
-                src={recipe?.recipeImage}
-                className='h-52 max-h-52 w-full object-cover rounded-xl'
-              />
-            </Link>
+        {/* LIST RECIPES */}
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 w-[97%] mx-auto">
+            {
+                recipes?.length > 0 ? recipes?.map((recipe: any) => (
+                    <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white shadow-[rgba(245,_208,_254)_0px_3px_8px] transition-all duration-200 ease-in-out hover:scale-105">
+                        {/* Recipe Image */}
+                        <Link to={recipe?._id} className="w-full h-48 rounded-xl">
+                            <img src={recipe?.recipeImage} className="h-52 max-h-52 w-full object-cover rounded-xl"/>
+                        </Link>
 
-            {/* Recipe Detail */}
-            <div className='flex flex-col gap-4 p-5'>
-              <div className='flex justify-between items-center'>
-                <Link to={recipe?._id} className='font-semibold text-xl'>
-                  {recipe?.recipeName}
-                </Link>
-                {/* Recipe Like Button */}
-                <div
-                  onClick={() => handleLike(recipe)}
-                  className='cursor-pointer'
-                >
-                  {checkLike(recipe) ? (
-                    <Favorite style={{ color: 'red' }} />
-                  ) : (
-                    <FavoriteBorder />
-                  )}
-                </div>
-              </div>
+                        {/* Recipe Detail */}
+                        <div className='flex flex-col gap-4 p-5'>
+                          <div className='flex justify-between items-center'>
+                            <Link to={recipe?._id} className='font-semibold text-xl'>
+                              {recipe?.recipeName}
+                            </Link>
+                            {/* Recipe Like Button */}
+                            <div
+                              onClick={() => handleLike(recipe)}
+                              className='cursor-pointer'
+                            >
+                              {
+                                checkLike(recipe) ? (
+                                  <Favorite style={{ color: 'red' }} />
+                                ) : (
+                                    <FavoriteBorder />
+                                  )}
+                            </div>
+                          </div>
 
-              {/* Recipe rating and cook time */}
-              <div className='flex gap-3 items-center text-sm font-normal'>
-                <div className='flex items-center gap-2'>
-                  {/* <span className="material-symbols-outlined text-yellow-400">
+                          {/* Recipe rating and cook time */}
+                          <div className='flex gap-3 items-center text-sm font-normal'>
+                            <div className='flex items-center gap-2'>
+                            {/* <span className="material-symbols-outlined text-yellow-400">
                                         <Star style={{fontSize:'12px'}}/>
                                     </span> */}
-                  <Star style={{ fontSize: '12px', color: 'yellow' }} />
-                  <div>
-                    {!isNaN(parseInt(getAverageRating(recipe?.rating)))
-                      ? getAverageRating(recipe?.rating)
-                      : 0}
-                  </div>
+                              <Star style={{ fontSize: '12px', color: 'yellow' }} />
+                              <div>
+                                {!isNaN(parseInt(getAverageRating(recipe?.rating)))
+                                  ? getAverageRating(recipe?.rating)
+                                  : 0
+                                }
+                              </div>
 
-                  <div>{`( ${recipe?.rating?.length} )`}</div>
-                </div>
+                            <div>{`( ${recipe?.rating?.length} )`}</div>
+                          </div>
 
-                <div className='w-1 h-1 rounded-full bg-slate-300'></div>
+                          <div className='w-1 h-1 rounded-full bg-slate-300'></div>
 
-                <div>{`${recipe?.cookingTime} mins`}</div>
-              </div>
+                          <div>{`${recipe?.cookingTime} mins`}</div>
+                        </div>
 
-              {/* Recipe Tags */}
-              <div className='flex gap-1'>
-                {[recipe?.category, recipe?.cuisines, recipe?.mealType]?.map(
-                  (tag) => (
-                    <div className='text-xs px-3 py-1 bg-slate-100 rounded-xl'>
-                      {tag}
+                        {/* Recipe Tags */}
+                        <div className='flex gap-1'>
+                          {[recipe?.category, recipe?.cuisines, recipe?.mealType]?.map(
+                            (tag) => (
+                              <div className='text-xs px-3 py-1 bg-slate-100 rounded-xl'>
+                                {tag}
+                              </div>
+                            )
+                          )}
+                        </div>
+
+                        {/* Recipe Created by User */}
+                        <div className='flex items-center gap-3 pt-2'>
+                          {/*Created by User image */}
+                          <div className='w-6 h-6 rounded-full bg-[#a1a0a052]'></div>
+
+                          {/* created by user name */}
+                          <div className='text-sm'>{`by ${recipe?.created_by?.name}`}</div>
+                        </div>
+                      </div>
                     </div>
-                  )
-                )}
-              </div>
-
-              {/* Recipe Created by User */}
-              <div className='flex items-center gap-3 pt-2'>
-                {/*Created by User image */}
-                <div className='w-6 h-6 rounded-full bg-[#a1a0a052]'></div>
-
-                {/* created by user name */}
-                <div className='text-sm'>{`by ${recipe?.created_by?.name}`}</div>
-              </div>
-            </div>
-          </div>
-        )): <div className='flex text-3xl font-bold w-[80vw] h-[70vh] mx-auto justify-center items-center text-[#858585]'>CookTopia cooking your search</div>}
+                  )): <div className='flex text-3xl font-bold w-[80vw] h-[70vh] mx-auto justify-center items-center text-[#858585]'>CookTopia cooking your search</div>}
       </div>
     </div>
   );

@@ -136,16 +136,16 @@ const RecipeDetails = () => {
       </Helmet>
       {/* RECIPE BANNER */}
       <div className='w-full bg-[#202124] h-[500px] flex items-center gap-8 py-8'>
-        <div className='w-9/12 mx-auto flex items-center gap-10'>
+        <div className=' w-11/12 lg:w-9/12 mx-auto flex lg:flex-nowrap flex-wrap items-center gap-4 lg:gap-10'>
           {/* RECIPE IMAGE */}
-          <div className='w-1/2 rounded-xl h-[300px] max-h-[300px]'>
+          <div className='w-full lg:w-1/2 rounded-xl lg:h-[300px] lg:max-h-[300px]'>
             <img
               src={recipeDetails?.recipeImage}
               className='w-full object-cover rounded-xl max-h-[300px]'
             />
           </div>
 
-          <div className='w-1/2 flex flex-start flex-col gap-5'>
+          <div className='w-full lg:w-1/2 flex flex-start flex-col gap-5'>
             {/* TAGS */}
             <div className='flex gap-5'>
               <div className={`tag`}>{recipeDetails?.cuisines}</div>
