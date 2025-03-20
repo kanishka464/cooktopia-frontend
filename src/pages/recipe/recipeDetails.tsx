@@ -238,7 +238,7 @@ const RecipeDetails = () => {
       {/* Rate Recipe */}
       <div className='w-full py-5'>
         <div className='w-11/12 mx-auto'>
-          <div className='flex flex-col w-1/2 gap-3 bg-white p-5 rounded-xl shadow-lg'>
+          <div className='flex flex-col w-full lg:w-1/2 gap-3 bg-white p-5 rounded-xl shadow-lg'>
             <div className='font-semibold'>Rate This Recipe</div>
 
             <CustomStarRating value={getRatingValue()} />

@@ -190,7 +190,7 @@ const Recipes = () => {
       </div>
 
         {/* LIST RECIPES */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 w-[97%] mx-auto">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 w-[95%] lg:w-[97%] mx-auto">
             {
                 recipes?.length > 0 ? recipes?.map((recipe: any) => (
                     <div key={recipe?._id} className="flex flex-col w-full rounded-xl bg-white shadow-[rgba(245,_208,_254)_0px_3px_8px] transition-all duration-200 ease-in-out hover:scale-105">

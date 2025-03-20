@@ -124,11 +124,11 @@ const Dashboard = () => {
       </div>
 
       {/* Profile Analytics */}
-      <div className='flex justify-between gap-8 w-11/12 mx-auto'>
+      <div className='flex flex-wrap lg:flex-nowrap justify-between gap-2 lg:gap-8 w-[95%] lg:w-11/12 mx-auto'>
         {profileAnalytics?.map((analytic) => (
           <div
             key={analytic.id}
-            className='flex gap-3 bg-white w-1/4 p-5 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]'
+            className='flex flex-wrap lg:flex-nowrap gap-3 bg-white w-[48%] lg:w-1/4 p-3 lg:p-5 rounded-xl shadow-[0_8px_30px_rgb(0,0,0,0.12)]'
           >
             <span className='material-symbols-outlined p-3 rounded-md bg-slate-100'>
               {analytic.icon}
@@ -146,9 +146,9 @@ const Dashboard = () => {
       </div>
 
       {/* Recent Activity */}
-      <div className='flex justify-between gap-8 w-11/12 mx-auto'>
+      <div className='flex flex-wrap lg:flex-nowrap justify-between gap-8 w-[95%] lg:w-11/12 mx-auto'>
         {/* Activities */}
-        <div className='w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]'>
+        <div className='w-full lg:w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]'>
           <div className='text-xl font-bold'>Recent Activities</div>
 
           <div className='flex flex-col gap-5'>
@@ -173,12 +173,12 @@ const Dashboard = () => {
         </div>
 
         {/* Trending Recipes */}
-        <div className='w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]'>
+        <div className='w-[95%] lg:w-1/2 bg-white rounded-xl p-5 flex flex-col gap-5 shadow-[0_8px_30px_rgb(0,0,0,0.12)]'>
           <div className='text-xl font-bold'>Trending Recipes</div>
 
           <div className='flex flex-col'>
             {trendingRecipe?.length > 0 ? trendingRecipe?.map((recipe: any) => (
-              <div className='flex items-center gap-5 hover:bg-fuchsia-100 px-5 py-3 rounded-lg cursor-pointer' onClick={() => navigate(`/recipes/${recipe?._id}`)}>
+              <div className='flex flex-wrap lg:flex-nowrap items-center gap-5 hover:bg-fuchsia-100  px-2 lg:px-5 py-3 rounded-lg cursor-pointer' onClick={() => navigate(`/recipes/${recipe?._id}`)}>
                 <div className='flex justify-center items-center bg-slate-100 rounded-lg text-[#666666] text-2xl '>
                   <img
                     src={recipe?.recipeImage}

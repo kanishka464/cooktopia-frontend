@@ -79,10 +79,10 @@ const Community = () => {
       {/* COMMUNITY HEADER */}
       <div className='flex mx-auto w-[97%] bg-white rounded-lg shadow-[0_3px_10px_rgb(0,0,0,0.2)] my-2'>
         <div className='flex w-full justify-between items-center py-4 px-8'>
-          <div className='text-2xl font-semibold'>Community Discussion</div>
+          <div className='text-lg lg:text-2xl font-semibold'>Community Discussion</div>
 
           <div
-            className='bg-[#202124] text-white rounded-lg px-3 py-2 cursor-pointer'
+            className='bg-[#202124] text-white rounded-lg px-2 lg:px-3 py-1 lg:py-2 cursor-pointer text-sm'
             onClick={() => setOpen(true)}
           >
             New Post
@@ -91,7 +91,7 @@ const Community = () => {
       </div>
 
       {/* POST LISTING */}
-      <div className='grid grid-cols-3 gap-5 w-[97%] mx-auto'>
+      <div className='grid grid-cols-2 lg:grid-cols-3 gap-5 w-[97%] mx-auto'>
         {posts?.map((post: any) => (
           <div className='bg-white w-full p-3 rounded-lg shadow-lg'>
             <div className='font-bold'>{post?.postTitle}</div>
