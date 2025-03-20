@@ -255,7 +255,9 @@ const Recipes = () => {
                         {/* Recipe Created by User */}
                         <div className='flex items-center gap-3 pt-2'>
                           {/*Created by User image */}
-                          <div className='w-6 h-6 rounded-full bg-[#a1a0a052]'></div>
+                          <div className='w-8 h-8 rounded-full bg-[#a1a0a052] cursor-pointer' onClick={() => navigate(`/profile/${recipe?.created_by?._id}`)}>
+                            <img src={recipe?.created_by?.picture}/>
+                          </div>
 
                           {/* created by user name */}
                           <div className='text-sm'>{`by ${recipe?.created_by?.name}`}</div>

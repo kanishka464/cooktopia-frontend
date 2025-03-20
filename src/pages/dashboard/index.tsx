@@ -152,11 +152,12 @@ const Dashboard = () => {
           <div className='text-xl font-bold'>Recent Activities</div>
 
           <div className='flex flex-col gap-5'>
-            {recentActivity?.map((activity:any) => (
+            {recentActivity?.length > 0 ? recentActivity?.map((activity:any) => (
               <div className='flex gap-3'>
                 <img
-                  className='w-10 h-10'
-                  src={`https://api.dicebear.com/9.x/avataaars/svg?seed=${activity.user}&radius=50&backgroundColor=65c9ff,b6e3f4,ffdfbf,ffd5dc,d1d4f9,c0aede&backgroundType=gradientLinear,solid`}
+                  className='w-10 h-10 cursor-pointer'
+                  src={activity?.picture}
+                  onClick={() => navigate(`/profile/${activity?.userId}`)}
                 />
 
                 <div className='flex flex-col'>
@@ -167,7 +168,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            )) : <div className='flex justify-center items-center text-xl text-[#858585] font-semibold min-h-[200px]'>No Recent Activities</div>}
           </div>
         </div>
 
@@ -176,7 +177,7 @@ const Dashboard = () => {
           <div className='text-xl font-bold'>Trending Recipes</div>
 
           <div className='flex flex-col'>
-            {trendingRecipe?.map((recipe: any) => (
+            {trendingRecipe?.length > 0 ? trendingRecipe?.map((recipe: any) => (
               <div className='flex items-center gap-5 hover:bg-fuchsia-100 px-5 py-3 rounded-lg cursor-pointer' onClick={() => navigate(`/recipes/${recipe?._id}`)}>
                 <div className='flex justify-center items-center bg-slate-100 rounded-lg text-[#666666] text-2xl '>
                   <img
@@ -215,7 +216,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-            ))}
+            )) : <div className='flex justify-center items-center text-xl cursor-pointer font-semibold min-h-[200px] text-[#858585]' onClick={() => navigate('/create-recipe')}> Create Recipes to go trending</div>}
           </div>
         </div>
       </div>
