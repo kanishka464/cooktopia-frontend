@@ -10,6 +10,7 @@ function App() {
     <BrowserRouter>
       <div className='bg-[#f5f5f5] w-full h-[100vh]'>
       <Routes>
+        <Route path='/' element={<div>Hello</div>}/>
         <Route path="login" element={<Login/>}/>
         <Route path='dashboard' element={<Dashboard/>}/>
         <Route path="create-recipe" element={<CreateRecipe/>}/>
