@@ -52,7 +52,7 @@ export default defineConfig({
     outDir: "dist", // Ensures Vercel finds the build output
     emptyOutDir: true, // Clears old files before building
   },
-  base: "./", // Fixes asset paths in Vercel
+  base: "/", // Fixes asset paths in Vercel
 });
 
 
