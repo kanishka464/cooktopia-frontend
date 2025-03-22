@@ -3,7 +3,6 @@ import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const RegisterForm = (props:any) => {
     const { setSelectedMethod } = props;
@@ -12,8 +11,6 @@ const RegisterForm = (props:any) => {
 
     const [form, setForm] = useState({username:'', email:'', password:'', confirmPassword:''});
     const [error, setError] = useState({username:false, email:false, password:false});
-
-    const navigate = useNavigate();
 
     const handleForm = (e:any) => {
         setForm({
