@@ -100,6 +100,8 @@ const CreateRecipe = () => {
     steps: [],
     created_by: "",
     comments: [],
+    rating: [{ rating: 0, ratedBy: { _id: "" } }],
+    likedByUser: false,
   });
 
   const handleRecipeForm = (key: string, value: string | number) => {

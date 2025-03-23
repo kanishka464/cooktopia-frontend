@@ -7,7 +7,7 @@ export interface Comment {
 }
 
 export interface Recipe {
-    recipeName: string;
+    recipeName: string | undefined;
     recipeImage?: string;
     cuisines: string;
     category: string;
