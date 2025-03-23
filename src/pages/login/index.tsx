@@ -8,7 +8,7 @@ const Login = () => {
     const [selectedMethod, setSelectedMethod] = useState<string>('login');
     return (
         <div className="flex justify-center items-center w-full h-[100vh]">
-            <div className="p-5 bg-white flex flex-col gap-5 items-center w-1/4">
+            <div className="p-5 bg-white flex flex-col gap-5 items-center w-[60%] lg:w-1/4">
                 <div className="flex flex-col items-center gap-1">
                     <div className="font-bold text-3xl">
                         CookTopia
