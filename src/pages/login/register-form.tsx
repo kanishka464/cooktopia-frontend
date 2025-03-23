@@ -48,7 +48,7 @@ const RegisterForm = (props:any) => {
                 email:form.email,
                 password: form.password
             }
-            const response = await axios.post('http://localhost:4000/api/users/add', payload);
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/users/add`, payload);
             if(response?.data?.success) {
                 toast({
                     title:'User Registered successfully',

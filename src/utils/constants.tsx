@@ -15,3 +15,10 @@ export const userAvatar = [
     "Chase",
     "Luis",
 ]
+
+export const type = [
+    "adventurer",
+    "adventurer-neutral",
+    "dylan",
+    "micah"
+] 
